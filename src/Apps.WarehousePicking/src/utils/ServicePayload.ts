@@ -25,9 +25,9 @@ export async function serviceResult<T>(call: Promise<IOperationResult<T>>): Prom
 function serverMessage(text: string | undefined): string {
   if (!text) return "The request failed";
   try {
-    return (JSON.parse(text) as { error?: { message?: string } }).error?.message || text;
+    const parsed = JSON.parse(text) as { error?: { message?: string }; message?: string };
+    return parsed.error?.message || parsed.message || text;
   } catch {
     return text;
   }
 }
-

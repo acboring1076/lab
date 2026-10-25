@@ -92,7 +92,7 @@ public class Script : ScriptBase
     }
 
     // System.Web.HttpUtility isn't in the custom-code namespace allowlist, so query strings are
-    // parsed by hand here instead.
+    // parsed by hand instead.
     private static string GetQueryParameter(Uri requestUri, string name)
     {
         var query = requestUri.Query.TrimStart('?');
